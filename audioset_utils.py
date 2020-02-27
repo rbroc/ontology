@@ -26,6 +26,12 @@ j_df['levels'][j_df['parent_ids'] == 'n/a'] = '1'
 first_level_id = j_df['id'][j_df['levels'] == '1'].tolist()
 j_df['levels'][j_df['parent_ids'].isin(first_level_id)] = '2'
 
+# Store first and second level ids
+first_level_labels = j_df['name'][j_df['id'].isin(first_level_id)]
+second_level_labels = j_df['name'][j_df['parent_ids'].isin(first_level_id)]
+top_levels_dict = {'first_level': first_level_labels.tolist(), 'second_level': second_level_labels.tolist()}
+json.dump(top_levels_dict, open('top_level_labels.json',"w"))
+
 # Add further levels
 for i in range(2,7):
     idx = str(i)
