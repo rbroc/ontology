@@ -87,4 +87,4 @@ second_level_yamnet = [s for s in second_level_labels if j_df['is_yamnet'][j_df[
 
 top_levels_dict_yamnet = {'first_level': first_level_yamnet,
                           'second_level': second_level_yamnet}
-json.dump(top_levels_dict, open('yamnet_top_level_labels.json',"w"))
+json.dump(top_levels_dict_yamnet, open('yamnet_top_level_labels.json',"w"))
